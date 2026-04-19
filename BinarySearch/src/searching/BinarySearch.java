@@ -1,7 +1,8 @@
-public class BinarySearch{
+package searching;
 
-    public static void main(){
-        int[] nums = new int[]{1,2,3,4,5,6,7,8,9,10};
+public class BinarySearch {
+    public static void main(String[] args){
+        int[] nums = new int[]{1,2,3,4,5,5,6,7,8,9,10};
         int target = 5;
         int index = find(nums,target);
         if(index!=-1){
@@ -34,13 +35,11 @@ public class BinarySearch{
     }
     public static int insertIndex(int[] nums,int target){
         int l=0;
-        int r=nums.length-1;
-        while(l<=r){
+        int r=nums.length;
+        while(l<r){
             int mid = l+(r-l)/2;
-            if(nums[mid]==target){
-                return mid;
-            }else if(target<nums[mid]){
-                r=mid-1;
+            if(nums[mid]>=target){
+                r= mid;
             }else{
                 l=mid+1;
             }
@@ -50,13 +49,13 @@ public class BinarySearch{
 
     public static int upperBound(int[] nums,int target){
         int l=0;
-        int r=nums.length-1;
-        while(l<=r){
+        int r=nums.length;
+        while(l<r){
             int mid = l+(r-l)/2;
-            if(nums[mid]<=target){
-                l=mid+1;
+            if(nums[mid]>target){
+                r= mid;
             }else{
-                r=mid-1;
+                l=mid+1;
             }
         }
         return l;
@@ -64,16 +63,15 @@ public class BinarySearch{
 
     public static int lowerBound(int[] nums,int target){
         int l=0;
-        int r=nums.length-1;
-        while(l<=r){
+        int r=nums.length;
+        while(l<r){
             int mid = l+(r-l)/2;
-            if(nums[mid]<target){
-                l=mid+1;
+            if(nums[mid]>=target){
+                r= mid;
             }else{
-                r=mid-1;
+                l=mid+1;
             }
         }
         return l;
     }
-  
 }
